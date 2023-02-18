@@ -5,9 +5,8 @@ a = [0] * n
 for i in range(n):
     a[i] = int(random() * m)
 print(a)
-for i in range(n-1):
-    for j in range(i+1, n):
-        if a[i] == a[j]:
-            print('Есть дубликаты')
-            quit()
-print('Нет дубликатов')
+setarr = set(a)
+if len(a) == len(setarr):
+    print('Нет дубликатов')
+else:
+    print('Есть дубликаты')
