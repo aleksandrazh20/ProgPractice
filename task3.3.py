@@ -1,29 +1,22 @@
 import json
 
-with open('RomeoAndJuliet.json', 'r', encoding='utf-8') as f:
-    info = json.load(f)
 
-char = []
+with open('RomeoAndJuliet.json', 'r', encoding='UTF-8') as d:
+    info = json.load(d)
+chars = {}
 for act in info["acts"]:
     for scene in act["scenes"]:
         for action in scene["action"]:
-            if action["character"] not in char:
-                char.append(action["character"])
+            if action["character"] not in chars:
+                chars[action["character"]] = 1
+            else:
+                chars[action["character"]] += 1
 
-new_info = {}
-for character in char:
-    c = 0
-    for act in info["acts"]:
-        for scene in act["scenes"]:
-            for action in scene["action"]:
-                if action["character"] == character:
-                    c += 1
-    new_info[character] = c
+max = 0
+for character in chars:
+    if chars[character] >= max:
+        max = chars[character]
+        name = character
+print(name)
 
-lines_max = 0
-char_name = None
-for character in new_info:
-    if new_info[character] >= lines_max:
-        lines_max = new_info[character]
-        char_name = character
-print(char_name)
+

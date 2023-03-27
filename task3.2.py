@@ -1,16 +1,19 @@
 import json
 
-with open('RomeoAndJuliet.json', 'r', encoding='utf-8') as f:
-    info = json.load(f)
+characters = list()
+with open('RomeoAndJuliet.json', 'r') as f:
+    data = json.load(f)
+    for j in range(len(data['acts'])):
+        for k in range(len(data['acts'][j]['scenes'])):
+            chars = set()
+            for l in range(len(data['acts'][j]['scenes'][k]['action'])):
+                chars.add(data['acts'][j]['scenes'][k]['action'][l]['character'])
+            chars = list(chars)
+            characters.append(chars)
+print(characters)
+with open('2.json', 'w') as q:
+    for i in characters:
+        q.write(json.dumps(i))
+        q.write("\n")
 
-result = []
-for act in info["acts"]:
-    for scene in act["scenes"]:
-        characters = []
-        for action in scene["action"]:
-            if action["character"] not in characters:
-                characters.append(action["character"])
-        result.append(characters)
 
-with open('2.json', 'w') as d:
-    d.write(json.dumps(result,ensure_ascii=False, indent=4))
