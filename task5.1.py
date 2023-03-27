@@ -1,4 +1,3 @@
-import collections
 from collections import Counter
 import json
 
@@ -14,5 +13,5 @@ for act in info["acts"]:
 
 most_common = Counter(words).most_common(20)
 print(f"Most common:{most_common}")
-least_common = collections.Counter(words).most_common()[-21::]
+least_common = Counter(words).most_common()[-21::]
 print(f"Least common: {least_common}")
