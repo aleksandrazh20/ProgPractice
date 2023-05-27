@@ -20,7 +20,7 @@ class Project_Manager(Employee):
         print("Project Manager")
         super().info()
 
-class dev(Employee):
+class Dev(Employee):
     def __init__(self, name, salary, exp, it_exp, language):
         super().__init__(name, "Developer", salary, exp)
         self.it_exp = it_exp
@@ -44,23 +44,22 @@ class Accountant(Employee):
         print("Program used:", self.prog)
 
 
-class dev2(Employee):
-    def __init__(self, name, salary, exp, it_exp, language):
-        super().__init__(name, "developer", salary, exp)
-        self.it_exp = it_exp
-        self.language = language
+class Smm(Employee):
+    def __init__(self, name, salary, exp, soc_med):
+        super().__init__(name, "SMM", salary, exp)
+        self.soc_med = soc_med
 
-    def print_info(self):
-        print("developer")
+    def info(self):
+        print("SMM")
         super().info()
-        print("Programming language:", self.language)
+        print("Social media:", self.soc_med)
 
 
 employees = [
     Project_Manager("Maria", 40000, 3),
-    dev("Anton", 80000, 5, "senior", "java"),
+    Dev("Anton", 80000, 5, "senior", "java"),
     Accountant("Natali", 60000, 6, "CRM"),
-    dev2("Sergey", 50000, 1, "Junior", "python")
+    Smm("Alina", 50000, 2, "Instagram")
 ]
 
 for employee in employees:
